@@ -16,11 +16,6 @@ public class ObjectDragController : MonoBehaviour
         TouchManager.Instance.OnTouchMove += OnTouchMove;
         TouchManager.Instance.OnTouchEnd += OnTouchEnd;
         boundaries = GameArea.Instance.GetBoundaries();
-        
-        Debug.Log($"left: {boundaries.leftBoundary}");
-        Debug.Log($"right: {boundaries.rightBoundary}");
-        Debug.Log($"bottom: {boundaries.bottomBoundary}");
-        Debug.Log($"top: {boundaries.topBoundary}");
     }
 
     private void OnTouchBegin(TouchManager.TouchData touchData)

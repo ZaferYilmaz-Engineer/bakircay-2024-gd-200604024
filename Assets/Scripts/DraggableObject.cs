@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class DraggableObject : MonoBehaviour
 { 
+    public bool isBeingDragged;
+    
     private Rigidbody rb;
     private float dragSpeed = 2.5f;
     private float yThreshold = 4f;
@@ -17,6 +19,7 @@ public class DraggableObject : MonoBehaviour
 
     public void JumpToDragStartPosition()
     {
+        isBeingDragged = true;
         rb.isKinematic = true;
 
         float endValue = rb.transform.position.y + 2f;
@@ -40,7 +43,16 @@ public class DraggableObject : MonoBehaviour
     
     public void Drop()
     {
+        isBeingDragged = false;
         rb.isKinematic = false;
         transform.DOKill();
+    }
+
+    public void LaunchToSpawnPosition()
+    {
+        Vector3 forceVector = new Vector3(0, 1, 1);
+        float forceMagnitude = 10;
+        forceVector *= forceMagnitude;
+        rb.AddForce(forceVector, ForceMode.Impulse);
     }
 }
