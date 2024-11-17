@@ -14,7 +14,7 @@ public class PlacementArea : MonoBehaviour
         {
             if (other.TryGetComponent(out DraggableObject objectToLaunch))
             {
-                objectToLaunch.LaunchToSpawnPosition();
+                HandleMultipleObject(objectToLaunch);
             }
             
             return;
@@ -39,5 +39,11 @@ public class PlacementArea : MonoBehaviour
         {
             currentObject = null;
         }
+    }
+
+    private void HandleMultipleObject(DraggableObject objectToLaunch)
+    {
+        WarningUI.Instance.ShowWarning();
+        objectToLaunch.LaunchToSpawnPosition();
     }
 }
