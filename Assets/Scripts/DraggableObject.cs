@@ -18,7 +18,6 @@ public class DraggableObject : MonoBehaviour
     public void JumpToDragStartPosition()
     {
         rb.isKinematic = true;
-        rb.useGravity = false;
 
         float endValue = rb.transform.position.y + 2f;
         endValue = Mathf.Clamp(endValue, 0, yThreshold);
@@ -26,15 +25,22 @@ public class DraggableObject : MonoBehaviour
         rb.DOMoveY(endValue, 0.2f);
     }
 
-    public void Drag(Vector2 offset)
+    public void Drag(Vector2 offset, GameArea.Boundaries boundaries)
     {
         rb.position += new Vector3(offset.x, 0, offset.y) * (Time.deltaTime * dragSpeed);
+        
+        var clampedXPosition = rb.position.x;
+        clampedXPosition = Mathf.Clamp(clampedXPosition, boundaries.leftBoundary, boundaries.rightBoundary);
+        
+        var clampedZPosition = rb.position.z;
+        clampedZPosition = Mathf.Clamp(clampedZPosition, boundaries.bottomBoundary, boundaries.topBoundary);
+
+        rb.position = new Vector3(clampedXPosition, rb.position.y, clampedZPosition);
     }
     
     public void Drop()
     {
         rb.isKinematic = false;
         transform.DOKill();
-        rb.useGravity = true;
     }
 }

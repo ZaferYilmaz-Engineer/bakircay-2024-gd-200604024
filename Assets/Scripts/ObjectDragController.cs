@@ -5,20 +5,29 @@ using UnityEngine;
 
 public class ObjectDragController : MonoBehaviour
 {
+    [SerializeField] private LayerMask draggableLayer;
+    
     private DraggableObject currentObject;
+    private GameArea.Boundaries boundaries;
     
     private void Start()
     {
         TouchManager.Instance.OnTouchBegin += OnTouchBegin;
         TouchManager.Instance.OnTouchMove += OnTouchMove;
         TouchManager.Instance.OnTouchEnd += OnTouchEnd;
+        boundaries = GameArea.Instance.GetBoundaries();
+        
+        Debug.Log($"left: {boundaries.leftBoundary}");
+        Debug.Log($"right: {boundaries.rightBoundary}");
+        Debug.Log($"bottom: {boundaries.bottomBoundary}");
+        Debug.Log($"top: {boundaries.topBoundary}");
     }
 
     private void OnTouchBegin(TouchManager.TouchData touchData)
     {
         Ray ray = Camera.main.ScreenPointToRay(touchData.position);
 
-        if (!Physics.Raycast(ray, out RaycastHit hit, 999f))
+        if (!Physics.Raycast(ray, out RaycastHit hit, 999f, draggableLayer))
         {
             return;
         }
@@ -34,7 +43,7 @@ public class ObjectDragController : MonoBehaviour
     
     private void OnTouchMove(TouchManager.TouchData touchData)
     {
-        currentObject?.Drag(touchData.deltaPosition);
+        currentObject?.Drag(touchData.deltaPosition, boundaries);
     }
 
     private void OnTouchEnd(TouchManager.TouchData touchData)
