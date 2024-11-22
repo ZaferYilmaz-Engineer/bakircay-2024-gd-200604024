@@ -19,3 +19,5 @@ Yerleştirme alanına yalnızca bir nesne bırakılabilir. Eğer bir nesne zaten
 
 # Bonus Özellikler
 Obje yerleştirme alanında hali hazırda bir obje var ise ve ikinci bir obje bu alana yerleştirmeye çalışılırsa oyun buna izin vermemekte ve ekrana bir bildiri yazısı çıkartmaktadır.
+
+![oyun_fotografi](https://github.com/user-attachments/assets/6be7961e-caae-4872-bc2c-0ae7c6a0df17)
