@@ -9,7 +9,7 @@ public class DraggableObject : MonoBehaviour
     public bool isBeingDragged;
     
     private Rigidbody rb;
-    private float dragSpeed = 2.5f;
+    private float dragSpeed = 1.2f;
     private float yThreshold = 4f;
 
     private void Awake()
