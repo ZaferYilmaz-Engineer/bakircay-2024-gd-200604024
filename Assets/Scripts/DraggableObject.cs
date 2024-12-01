@@ -28,9 +28,9 @@ public class DraggableObject : MonoBehaviour
         rb.DOMoveY(endValue, 0.2f);
     }
 
-    public void Drag(Vector2 offset, GameArea.Boundaries boundaries)
+    public void Drag(Vector3 mouseWorldPosition, GameArea.Boundaries boundaries)
     {
-        rb.position += new Vector3(offset.x, 0, offset.y) * (Time.deltaTime * dragSpeed);
+        rb.position = new Vector3(mouseWorldPosition.x, rb.position.y, mouseWorldPosition.z);
         
         var clampedXPosition = rb.position.x;
         clampedXPosition = Mathf.Clamp(clampedXPosition, boundaries.leftBoundary, boundaries.rightBoundary);

@@ -1681,7 +1681,7 @@ GameObject:
   - component: {fileID: 1836775370}
   - component: {fileID: 1836775369}
   - component: {fileID: 1836775372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1874,6 +1874,9 @@ MonoBehaviour:
   draggableLayer:
     serializedVersion: 2
     m_Bits: 64
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!4 &1879505862
 Transform:
   m_ObjectHideFlags: 0

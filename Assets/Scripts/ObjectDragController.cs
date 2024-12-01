@@ -6,6 +6,7 @@ using UnityEngine;
 public class ObjectDragController : MonoBehaviour
 {
     [SerializeField] private LayerMask draggableLayer;
+    [SerializeField] private LayerMask groundLayer;
     
     private DraggableObject currentObject;
     private GameArea.Boundaries boundaries;
@@ -13,7 +14,7 @@ public class ObjectDragController : MonoBehaviour
     private void Start()
     {
         TouchManager.Instance.OnTouchBegin += OnTouchBegin;
-        TouchManager.Instance.OnTouchMove += OnTouchMove;
+        TouchManager.Instance.OnTouchHold += OnTouchHold;
         TouchManager.Instance.OnTouchEnd += OnTouchEnd;
         boundaries = GameArea.Instance.GetBoundaries();
     }
@@ -36,9 +37,17 @@ public class ObjectDragController : MonoBehaviour
         currentObject.JumpToDragStartPosition();
     }
     
-    private void OnTouchMove(TouchManager.TouchData touchData)
+    private void OnTouchHold(TouchManager.TouchData touchData)
     {
-        currentObject?.Drag(touchData.deltaPosition, boundaries);
+        Ray ray = Camera.main.ScreenPointToRay(touchData.position);
+
+        if (!Physics.Raycast(ray, out RaycastHit hit, 999f, groundLayer))
+        {
+            return;
+        }
+        
+        Debug.DrawRay(hit.point, Vector3.up, Color.red);
+        currentObject?.Drag(hit.point, boundaries);
     }
 
     private void OnTouchEnd(TouchManager.TouchData touchData)
@@ -50,7 +59,7 @@ public class ObjectDragController : MonoBehaviour
     private void OnDestroy()
     {
         TouchManager.Instance.OnTouchBegin -= OnTouchBegin;
-        TouchManager.Instance.OnTouchMove -= OnTouchMove;
+        TouchManager.Instance.OnTouchMove -= OnTouchHold;
         TouchManager.Instance.OnTouchEnd -= OnTouchEnd;
     }
 }

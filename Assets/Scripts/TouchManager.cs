@@ -16,6 +16,7 @@ public class TouchManager : MonoBehaviour
     public Action<TouchData> OnTouchBegin;
     public Action<TouchData> OnTouchMove;
     public Action<TouchData> OnTouchEnd;
+    public Action<TouchData> OnTouchHold;
 
     private Vector3 oldPosition;
 
@@ -40,6 +41,7 @@ public class TouchManager : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             HandleTouchMove();
+            HandleTouchHold();
         }
         
         if (Input.GetMouseButtonUp(0))
@@ -76,6 +78,19 @@ public class TouchManager : MonoBehaviour
         };
         
         OnTouchMove?.Invoke(touchData);
+    }
+
+    private void HandleTouchHold()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            var touchData = new TouchData
+            {
+                position = Input.mousePosition
+            };
+            
+            OnTouchHold?.Invoke(touchData);
+        }
     }
     
     private void HandleTouchEnd()
