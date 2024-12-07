@@ -12,6 +12,8 @@ public class TouchManager : MonoBehaviour
     }
     
     public static TouchManager Instance { get; private set; }
+
+    public bool isTouchEnabled;
     
     public Action<TouchData> OnTouchBegin;
     public Action<TouchData> OnTouchMove;
@@ -29,10 +31,16 @@ public class TouchManager : MonoBehaviour
         }
 
         Instance = this;
+        isTouchEnabled = true;
     }
 
     private void Update()
     {
+        if (!isTouchEnabled)
+        {
+            return;
+        }
+        
         if (Input.GetMouseButtonDown(0))
         {
             HandleTouchBegin();

@@ -47,6 +47,7 @@ public class WarningUI : MonoBehaviour
         backgroundImage.color = newBackgroundAlphaColor;
         
         panel.SetActive(true);
+        TouchManager.Instance.isTouchEnabled = false;
 
         warningText.DOKill();
         backgroundImage.DOKill();
@@ -66,6 +67,7 @@ public class WarningUI : MonoBehaviour
 
         sequence.onComplete += () =>
         {
+            TouchManager.Instance.isTouchEnabled = true;
             panel.SetActive(false);
         };
     }
