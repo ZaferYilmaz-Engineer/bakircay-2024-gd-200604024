@@ -15,11 +15,19 @@ public class DraggableObject : MonoBehaviour
     private Collider collider;
     private float dragSpeed = 1.2f;
     private float yThreshold = 4f;
+    private Vector3 initalScale;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
+    }
+
+    private void Start()
+    {
+        initalScale = transform.localScale;
+        transform.localScale = Vector3.zero * 0.1f;
+        transform.DOScale(initalScale, 0.2f);
     }
 
     public void JumpToDragStartPosition()

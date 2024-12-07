@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        //PlayBackgroundMusic();
+        PlayBackgroundMusic();
         
         PlacementArea.OnAnyObjectsPaired += PlacementArea_OnAnyObjectsPaired;
         LevelManager.OnAnyObjectSpawned += LevelManager_OnAnyObjectSpawned;
