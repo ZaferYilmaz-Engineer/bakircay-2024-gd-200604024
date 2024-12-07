@@ -59,6 +59,7 @@ public class DraggableObject : MonoBehaviour
         isBeingDragged = false;
         rb.isKinematic = false;
         transform.DOKill();
+        rb.velocity = Vector3.zero;
     }
 
     public void LaunchToSpawnPosition()
