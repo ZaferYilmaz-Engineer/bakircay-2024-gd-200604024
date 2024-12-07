@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8033511258872153776}
   m_Layer: 5
-  m_Name: ScoreTable
+  m_Name: ScoreContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,6 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 5573432186537734723}
   scoreText: {fileID: 5485119373654797749}
+  scoreContainer: {fileID: 8033511258872153776}
 --- !u!1 &7323515115554621516
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +427,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.6
+  m_fontSize: 58.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

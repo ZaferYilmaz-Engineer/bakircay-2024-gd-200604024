@@ -12,12 +12,14 @@ public class DraggableObject : MonoBehaviour
     [SerializeField] private DraggableObjectSO draggableObjectSO;
     
     private Rigidbody rb;
+    private Collider collider;
     private float dragSpeed = 1.2f;
     private float yThreshold = 4f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
     }
 
     public void JumpToDragStartPosition()
@@ -57,6 +59,12 @@ public class DraggableObject : MonoBehaviour
         float forceMagnitude = 10;
         forceVector *= forceMagnitude;
         rb.AddForce(forceVector, ForceMode.Impulse);
+    }
+
+    public void DisablePhysics()
+    {
+        rb.isKinematic = true;
+        collider.enabled = false;
     }
 
     public void DestroySelf()

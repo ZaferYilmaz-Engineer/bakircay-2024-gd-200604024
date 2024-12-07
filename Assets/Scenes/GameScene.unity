@@ -1215,6 +1215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292c9e97ba54def47ac38b1b79b6f6f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTouchEnabled: 0
 --- !u!4 &1171187185
 Transform:
   m_ObjectHideFlags: 0
@@ -1478,7 +1479,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &1836775369
 MeshRenderer:
@@ -3021,6 +3022,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlacementArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880115165205705682, guid: 4c0e505c2fcdafd488529bd9630ccf28,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880115165205705682, guid: 4c0e505c2fcdafd488529bd9630ccf28,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880115165205705682, guid: 4c0e505c2fcdafd488529bd9630ccf28,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880115165205705682, guid: 4c0e505c2fcdafd488529bd9630ccf28,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880115165205705682, guid: 4c0e505c2fcdafd488529bd9630ccf28,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880115165205705682, guid: 4c0e505c2fcdafd488529bd9630ccf28,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2265210288711174247, guid: 4c0e505c2fcdafd488529bd9630ccf28,
         type: 3}

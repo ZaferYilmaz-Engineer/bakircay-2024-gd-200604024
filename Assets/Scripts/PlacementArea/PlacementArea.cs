@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class PlacementArea : MonoBehaviour
 {
-    public static Action OnAnyObjectsPaired; 
-        
+    public static Action OnAnyObjectsPaired;
+
+    [SerializeField] private Transform pairSuccessAnimationTargetTransform;
+    
     private DraggableObject currentObject;
     
     private void OnTriggerEnter(Collider collidedObject)
@@ -57,14 +59,64 @@ public class PlacementArea : MonoBehaviour
         
         if (currentObject.DraggableObjectSO == secondObject.DraggableObjectSO)
         {
-            currentObject.DestroySelf();
-            secondObject.DestroySelf();
-            OnAnyObjectsPaired?.Invoke();
+            TouchManager.Instance.isTouchEnabled = false;
+            DoPairSuccessSequence(secondObject);
         }
         else
         {
             WarningUI.Instance.ShowWarning();
             secondObject.LaunchToSpawnPosition();   
         }
+    }
+
+    private void DoPairSuccessSequence(DraggableObject secondObject)
+    {
+        currentObject.DisablePhysics();
+        secondObject.DisablePhysics();
+        
+        Sequence generalSequence = DOTween.Sequence();
+        Sequence firstSuccessAnimationSequence = DOTween.Sequence();
+        Sequence finalSequence = DOTween.Sequence();
+        
+        Tween currentObjectPositionTween = DoMoveTween(currentObject.transform);
+        Tween currentObjectRotationTween = DoRotateTween(currentObject.transform);
+        
+        Tween secondObjectPositionTween = DoMoveTween(secondObject.transform);
+        Tween secondObjectRotationTween = DoRotateTween(secondObject.transform);
+
+        firstSuccessAnimationSequence.Append(currentObjectPositionTween);
+        firstSuccessAnimationSequence.Join(currentObjectRotationTween);
+        firstSuccessAnimationSequence.Join(secondObjectPositionTween);
+        firstSuccessAnimationSequence.Join(secondObjectRotationTween);
+        
+        generalSequence.Append(firstSuccessAnimationSequence);
+        firstSuccessAnimationSequence.onComplete += () =>
+        {
+            secondObject.DestroySelf();
+            OnAnyObjectsPaired?.Invoke();
+        };
+        
+        Tween finalScaleTween = currentObject.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f);
+        finalSequence.Append(finalScaleTween);
+        
+        generalSequence.Append(finalSequence);
+
+        generalSequence.onComplete += () =>
+        {
+            currentObject.DestroySelf();
+            TouchManager.Instance.isTouchEnabled = true;
+        };
+    }
+
+    private Tween DoMoveTween(Transform transformToTween)
+    {
+        Tween tween = transformToTween.DOMove(pairSuccessAnimationTargetTransform.position, 1f);
+        return tween;
+    }
+
+    private Tween DoRotateTween(Transform transformToTween)
+    {
+        var tween = transformToTween.DORotate(Vector3.zero, 1f);
+        return tween;
     }
 }
