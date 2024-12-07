@@ -6,26 +6,23 @@ using UnityEngine;
 
 public class PlacementArea : MonoBehaviour
 {
+    public static Action OnAnyObjectsPaired; 
+        
     private DraggableObject currentObject;
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collidedObject)
     {
         if (currentObject)
         {
-            if (other.TryGetComponent(out DraggableObject objectToLaunch))
+            if (collidedObject.TryGetComponent(out DraggableObject secondObject))
             {
-                HandleMultipleObject(objectToLaunch);
+                HandleMultipleObject(secondObject);
             }
             
             return;
         }
         
-        if (!other.TryGetComponent(out DraggableObject draggableObject) || draggableObject.isBeingDragged)
-        {
-            return;
-        }
-
-        currentObject = draggableObject;
+        HandleFirstObject(collidedObject);
     }
 
     private void OnTriggerExit(Collider other)
@@ -41,9 +38,33 @@ public class PlacementArea : MonoBehaviour
         }
     }
 
-    private void HandleMultipleObject(DraggableObject objectToLaunch)
+    private void HandleFirstObject(Collider collidedObject)
     {
-        WarningUI.Instance.ShowWarning();
-        objectToLaunch.LaunchToSpawnPosition();
+        if (!collidedObject.TryGetComponent(out DraggableObject draggableObject) || draggableObject.isBeingDragged)
+        {
+            return;
+        }
+
+        currentObject = draggableObject;
+    }
+    
+    private void HandleMultipleObject(DraggableObject secondObject)
+    {
+        if (secondObject.isBeingDragged)
+        {
+            return;
+        }
+        
+        if (currentObject.DraggableObjectSO == secondObject.DraggableObjectSO)
+        {
+            currentObject.DestroySelf();
+            secondObject.DestroySelf();
+            OnAnyObjectsPaired?.Invoke();
+        }
+        else
+        {
+            WarningUI.Instance.ShowWarning();
+            secondObject.LaunchToSpawnPosition();   
+        }
     }
 }

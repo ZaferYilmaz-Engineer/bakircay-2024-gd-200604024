@@ -5,8 +5,11 @@ using DG.Tweening;
 using UnityEngine;
 
 public class DraggableObject : MonoBehaviour
-{ 
+{
+    public DraggableObjectSO DraggableObjectSO => draggableObjectSO;
     public bool isBeingDragged;
+
+    [SerializeField] private DraggableObjectSO draggableObjectSO;
     
     private Rigidbody rb;
     private float dragSpeed = 1.2f;
@@ -54,5 +57,10 @@ public class DraggableObject : MonoBehaviour
         float forceMagnitude = 10;
         forceVector *= forceMagnitude;
         rb.AddForce(forceVector, ForceMode.Impulse);
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

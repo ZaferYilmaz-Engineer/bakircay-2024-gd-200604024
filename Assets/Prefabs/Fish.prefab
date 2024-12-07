@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBeingDragged: 0
+  draggableObjectSO: {fileID: 11400000, guid: 0faa58c9b9258e8448e94d193e68bdcf, type: 2}
 --- !u!1001 &2797349019138519187
 PrefabInstance:
   m_ObjectHideFlags: 0
