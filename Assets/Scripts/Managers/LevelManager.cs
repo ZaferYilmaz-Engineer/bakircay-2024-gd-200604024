@@ -46,10 +46,9 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator SpawnObjectCoroutine(int objectCount)
     {
-        TouchManager.Instance.isTouchEnabled = false;
-        
         for (int i = 0; i < objectCount / 2; i++)
         {
+            TouchManager.Instance.isTouchEnabled = false;
             int randomIndex = Random.Range(0, draggableObjectArray.Length);
             yield return new WaitForSeconds(0.2f);
             
