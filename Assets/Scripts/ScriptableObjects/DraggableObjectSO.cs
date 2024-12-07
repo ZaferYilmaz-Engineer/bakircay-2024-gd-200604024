@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DraggableObject", menuName = "ScriptableObjects/DraggableObject")]
 public class DraggableObjectSO : ScriptableObject
 {
-    
+    public GameObject prefab;
 }

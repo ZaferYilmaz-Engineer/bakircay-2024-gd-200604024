@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc15c5db7ea2fe49b7a549e7ab71a1e, type: 3}
   m_Name: Taco
   m_EditorClassIdentifier: 
+  prefab: {fileID: 6339989590617392783, guid: 1ddf6e3f24763134ebfc8d844ca49e0a, type: 3}

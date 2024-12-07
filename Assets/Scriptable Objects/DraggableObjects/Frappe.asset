@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc15c5db7ea2fe49b7a549e7ab71a1e, type: 3}
   m_Name: Frappe
   m_EditorClassIdentifier: 
+  prefab: {fileID: 2116361437620771092, guid: 4df2897b2f5804849bdcd767a11d262c, type: 3}

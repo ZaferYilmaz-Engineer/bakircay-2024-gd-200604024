@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc15c5db7ea2fe49b7a549e7ab71a1e, type: 3}
   m_Name: Turkey
   m_EditorClassIdentifier: 
+  prefab: {fileID: 1700817822361346511, guid: af7dd7d7d650d464cb7bde6d90417867, type: 3}

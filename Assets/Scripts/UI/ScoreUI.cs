@@ -12,7 +12,11 @@ public class ScoreUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Transform scoreContainer;
 
-    private int score;
+    private int Score
+    {
+        get => PlayerPrefs.GetInt(nameof(Score), 0);
+        set => PlayerPrefs.SetInt(nameof(Score), value);
+    }
 
     private void Start()
     {
@@ -21,8 +25,8 @@ public class ScoreUI : MonoBehaviour
     
     private void PlacementArea_OnAnyObjectsPaired()
     {
-        score++;
-        scoreText.text = score.ToString();
+        Score++;
+        scoreText.text = Score.ToString();
 
         scoreContainer.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5);
     }

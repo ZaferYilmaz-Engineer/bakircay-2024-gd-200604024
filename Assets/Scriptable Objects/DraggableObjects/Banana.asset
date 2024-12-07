@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc15c5db7ea2fe49b7a549e7ab71a1e, type: 3}
   m_Name: Banana
   m_EditorClassIdentifier: 
+  prefab: {fileID: 5657430096702102682, guid: a0281d3ded69c534d8e6446cbc065ab8, type: 3}

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc15c5db7ea2fe49b7a549e7ab71a1e, type: 3}
   m_Name: Croissant
   m_EditorClassIdentifier: 
+  prefab: {fileID: 8527589011939824984, guid: fb4416fc4274f014ab9a66040d890468, type: 3}

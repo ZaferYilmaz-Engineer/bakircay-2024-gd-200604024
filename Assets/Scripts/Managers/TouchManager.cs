@@ -31,7 +31,6 @@ public class TouchManager : MonoBehaviour
         }
 
         Instance = this;
-        isTouchEnabled = true;
     }
 
     private void Update()
