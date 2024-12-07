@@ -26,8 +26,13 @@ public class LevelManager : MonoBehaviour
         PlacementArea.OnAnyObjectsPaired += PlacementArea_OnAnyObjectsPaired;
     }
 
-    private void PlacementArea_OnAnyObjectsPaired()
+    private void PlacementArea_OnAnyObjectsPaired(bool isSuccessful)
     {
+        if (!isSuccessful)
+        {
+            return;
+        }
+        
         pairedObjectCount++;
 
         if (pairedObjectCount >= totalObjectCount / 2)

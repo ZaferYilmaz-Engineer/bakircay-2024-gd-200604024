@@ -24,8 +24,13 @@ public class ScoreUI : MonoBehaviour
         PlacementArea.OnAnyObjectsPaired += PlacementArea_OnAnyObjectsPaired;
     }
     
-    private void PlacementArea_OnAnyObjectsPaired()
+    private void PlacementArea_OnAnyObjectsPaired(bool isSuccessful)
     {
+        if (!isSuccessful)
+        {
+            return;
+        }
+        
         Score++;
         scoreText.text = Score.ToString();
 

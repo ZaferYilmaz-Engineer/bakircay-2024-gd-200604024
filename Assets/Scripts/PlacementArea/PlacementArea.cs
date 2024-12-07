@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlacementArea : MonoBehaviour
 {
-    public static Action OnAnyObjectsPaired;
+    public static Action<bool> OnAnyObjectsPaired;
 
     [SerializeField] private Transform pairSuccessAnimationTargetTransform;
     
@@ -65,7 +65,8 @@ public class PlacementArea : MonoBehaviour
         else
         {
             WarningUI.Instance.ShowWarning();
-            secondObject.LaunchToSpawnPosition();   
+            secondObject.LaunchToSpawnPosition();
+            OnAnyObjectsPaired?.Invoke(false);
         }
     }
 
@@ -93,7 +94,7 @@ public class PlacementArea : MonoBehaviour
         firstSuccessAnimationSequence.onComplete += () =>
         {
             secondObject.DestroySelf();
-            OnAnyObjectsPaired?.Invoke();
+            OnAnyObjectsPaired?.Invoke(true);
         };
         
         Tween finalScaleTween = currentObject.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f);
