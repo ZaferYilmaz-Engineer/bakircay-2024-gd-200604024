@@ -15,3 +15,5 @@ MonoBehaviour:
   mainMenuMusic: {fileID: 8300000, guid: e0fe444b4c32a874caec439961b4fa82, type: 3}
   successfulPair: {fileID: 8300000, guid: eb0135264cbf04347aec20b956194748, type: 3}
   wrongPair: {fileID: 8300000, guid: cf402c14e4dc0854ab03ae4cad11e7dc, type: 3}
+  objectSpawnSoundEffect: {fileID: 8300000, guid: c0d98634a0a7e1948be15344e2336053,
+    type: 3}

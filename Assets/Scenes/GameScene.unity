@@ -173,8 +173,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.748466, y: 15.595365, z: 28.579857}
-  m_Center: {x: -4.632714, y: 7.2976823, z: 1.7017708}
+  m_Size: {x: 9.034736, y: 15.595365, z: 28.579857}
+  m_Center: {x: -4.4895787, y: 7.2976823, z: 1.7017708}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +312,59 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &360950121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 360950122}
+  - component: {fileID: 360950123}
+  m_Layer: 0
+  m_Name: RoofBoundary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &360950122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360950121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 11.525, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1663005349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &360950123
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360950121}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20.745098, y: 2.8452785, z: 26.161781}
+  m_Center: {x: 1.6066589, y: 0.6285721, z: 0.2551999}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +721,7 @@ GameObject:
   - component: {fileID: 1080169706}
   - component: {fileID: 1080169707}
   m_Layer: 0
-  m_Name: TopBoundary
+  m_Name: UpperBoundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -890,6 +943,7 @@ Transform:
   - {fileID: 2078322876}
   - {fileID: 1080169706}
   - {fileID: 2133248332}
+  - {fileID: 360950122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1663005350
@@ -1271,7 +1325,7 @@ GameObject:
   - component: {fileID: 2133248332}
   - component: {fileID: 2133248333}
   m_Layer: 0
-  m_Name: BottomBoundary
+  m_Name: LowerBoundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
