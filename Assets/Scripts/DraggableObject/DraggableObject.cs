@@ -61,10 +61,10 @@ public class DraggableObject : MonoBehaviour
         rb.AddForce(forceVector, ForceMode.Impulse);
     }
 
-    public void DisablePhysics()
+    public void SetPhysicsState(bool isActive)
     {
-        rb.isKinematic = true;
-        collider.enabled = false;
+        rb.isKinematic = !isActive;
+        collider.enabled = isActive;
     }
 
     public void DestroySelf()

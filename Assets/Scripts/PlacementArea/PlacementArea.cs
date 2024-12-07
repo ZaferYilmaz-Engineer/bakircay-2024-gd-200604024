@@ -71,8 +71,8 @@ public class PlacementArea : MonoBehaviour
 
     private void DoPairSuccessSequence(DraggableObject secondObject)
     {
-        currentObject.DisablePhysics();
-        secondObject.DisablePhysics();
+        currentObject.SetPhysicsState(false);
+        secondObject.SetPhysicsState(false);
         
         Sequence generalSequence = DOTween.Sequence();
         Sequence firstSuccessAnimationSequence = DOTween.Sequence();

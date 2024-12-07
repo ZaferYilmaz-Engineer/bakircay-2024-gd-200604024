@@ -9,6 +9,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private DraggableObjectSO[] draggableObjectArray;
     [SerializeField] [Range(0, 10f)] private float radius;
 
+    private int pairedObjectCount;
+    private int totalObjectCount;
+
     private int CurrentLevel
     {
         get => PlayerPrefs.GetInt(nameof(CurrentLevel), 1);
@@ -20,11 +23,25 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         SpawnObjects();
+        PlacementArea.OnAnyObjectsPaired += PlacementArea_OnAnyObjectsPaired;
     }
 
-    public void SpawnObjects()
+    private void PlacementArea_OnAnyObjectsPaired()
     {
-        StartCoroutine(SpawnObjectCoroutine(initialObjectCount + 4 * (CurrentLevel - 1)));
+        pairedObjectCount++;
+
+        if (pairedObjectCount >= totalObjectCount / 2)
+        {
+            pairedObjectCount = 0;
+            SpawnObjects();
+        }
+    }
+
+    private void SpawnObjects()
+    {
+        totalObjectCount = initialObjectCount + 4 * (CurrentLevel - 1);
+        StartCoroutine(SpawnObjectCoroutine(totalObjectCount));
+        CurrentLevel++;
     }
 
     private IEnumerator SpawnObjectCoroutine(int objectCount)
@@ -35,6 +52,7 @@ public class LevelManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, draggableObjectArray.Length);
             yield return new WaitForSeconds(0.2f);
+            
             Instantiate(draggableObjectArray[randomIndex].prefab, GetRandomPosition(), GetRandomRotation());
             yield return new WaitForSeconds(0.2f);
             Instantiate(draggableObjectArray[randomIndex].prefab, GetRandomPosition(), GetRandomRotation());
@@ -46,7 +64,7 @@ public class LevelManager : MonoBehaviour
     private Vector3 GetRandomPosition()
     {
         Vector3 randomPosition = Random.insideUnitSphere * radius;
-        float randomYPosition = Random.Range(0.4f, 0.7f);
+        float randomYPosition = Random.Range(0.6f, 1f);
 
         randomPosition = new Vector3(randomPosition.x, randomYPosition, randomPosition.z);
         return randomPosition;

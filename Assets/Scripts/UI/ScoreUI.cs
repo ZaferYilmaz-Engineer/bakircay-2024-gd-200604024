@@ -20,6 +20,7 @@ public class ScoreUI : MonoBehaviour
 
     private void Start()
     {
+        scoreText.text = Score.ToString();
         PlacementArea.OnAnyObjectsPaired += PlacementArea_OnAnyObjectsPaired;
     }
     
