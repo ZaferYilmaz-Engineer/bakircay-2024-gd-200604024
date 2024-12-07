@@ -8,4 +8,5 @@ public class SoundReferencesSO : ScriptableObject
     public AudioClip mainMenuMusic;
     public AudioClip successfulPair;
     public AudioClip wrongPair;
+    public AudioClip objectSpawnSoundEffect;
 }

@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
+    public static Action OnAnyObjectSpawned;
+    
     [SerializeField] private DraggableObjectSO[] draggableObjectArray;
     [SerializeField] [Range(0, 10f)] private float radius;
 
@@ -58,8 +60,10 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             
             Instantiate(draggableObjectArray[randomIndex].prefab, GetRandomPosition(), GetRandomRotation());
+            OnAnyObjectSpawned?.Invoke();
             yield return new WaitForSeconds(0.2f);
             Instantiate(draggableObjectArray[randomIndex].prefab, GetRandomPosition(), GetRandomRotation());
+            OnAnyObjectSpawned?.Invoke();
         }
         
         TouchManager.Instance.isTouchEnabled = true;

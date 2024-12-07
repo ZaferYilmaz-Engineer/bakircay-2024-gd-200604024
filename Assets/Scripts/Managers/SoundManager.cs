@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
@@ -9,9 +10,21 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        PlayBackgroundMusic();
+        //PlayBackgroundMusic();
         
         PlacementArea.OnAnyObjectsPaired += PlacementArea_OnAnyObjectsPaired;
+        LevelManager.OnAnyObjectSpawned += LevelManager_OnAnyObjectSpawned;
+    }
+
+    private void LevelManager_OnAnyObjectSpawned()
+    {
+        var spawnSoundObject = new GameObject("SpawnSound");
+        var audioSource = spawnSoundObject.AddComponent<AudioSource>();
+        audioSource.clip = soundReferencesSO.objectSpawnSoundEffect;
+        float pitch = Random.Range(1f, 1.2f);
+        audioSource.pitch = pitch;
+        audioSource.Play();
+        Destroy(spawnSoundObject, audioSource.clip.length);
     }
 
     private void PlacementArea_OnAnyObjectsPaired(bool isSuccessful)
@@ -27,7 +40,7 @@ public class SoundManager : MonoBehaviour
         var audioSource = mainMenuMusicObject.AddComponent<AudioSource>();
         audioSource.clip = soundReferencesSO.mainMenuMusic;
         audioSource.loop = true;
-        audioSource.volume = 0.15f;
+        audioSource.volume = 0.1f;
         audioSource.Play();
     }
 
@@ -45,5 +58,6 @@ public class SoundManager : MonoBehaviour
     private void OnDestroy()
     {
         PlacementArea.OnAnyObjectsPaired -= PlacementArea_OnAnyObjectsPaired;
+        LevelManager.OnAnyObjectSpawned -= LevelManager_OnAnyObjectSpawned;
     }
 }
