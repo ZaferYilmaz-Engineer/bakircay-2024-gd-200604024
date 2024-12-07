@@ -32,6 +32,7 @@ public class LevelManager : MonoBehaviour
 
         if (pairedObjectCount >= totalObjectCount / 2)
         {
+            CurrentLevel++;
             pairedObjectCount = 0;
             SpawnObjects();
         }
@@ -41,7 +42,6 @@ public class LevelManager : MonoBehaviour
     {
         totalObjectCount = initialObjectCount + 4 * (CurrentLevel - 1);
         StartCoroutine(SpawnObjectCoroutine(totalObjectCount));
-        CurrentLevel++;
     }
 
     private IEnumerator SpawnObjectCoroutine(int objectCount)
