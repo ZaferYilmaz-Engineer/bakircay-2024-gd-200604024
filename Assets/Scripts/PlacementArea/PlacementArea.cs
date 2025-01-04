@@ -48,6 +48,11 @@ public class PlacementArea : MonoBehaviour
         }
 
         currentObject = draggableObject;
+        currentObject.SetKinematicState(true);
+        
+        var targetPosition = transform.position + Vector3.up * 0.5f;
+        currentObject.transform.DOMove(targetPosition, 1f);
+        currentObject.transform.DORotate(Vector3.zero, 1f);
     }
     
     private void HandleMultipleObject(DraggableObject secondObject)

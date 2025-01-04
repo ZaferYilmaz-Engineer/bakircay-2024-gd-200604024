@@ -67,6 +67,11 @@ public class DraggableObject : MonoBehaviour
         rb.isKinematic = !isActive;
         collider.enabled = isActive;
     }
+    
+    public void SetKinematicState(bool isKinematic)
+    {
+        rb.isKinematic = isKinematic;
+    }
 
     public void DestroySelf()
     {
