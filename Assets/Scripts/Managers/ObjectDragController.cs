@@ -56,9 +56,13 @@ public class ObjectDragController : MonoBehaviour
 
     private void OnTouchEnd(TouchManager.TouchData touchData)
     {
-        currentObject?.Drop();
+        if (currentObject)
+        {
+            OnObjectDropped?.Invoke();
+            currentObject.Drop();
+        }
+        
         currentObject = null;
-        OnObjectDropped?.Invoke();
     }
     
     private void OnDestroy()
