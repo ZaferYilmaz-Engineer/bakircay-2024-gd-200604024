@@ -877,7 +877,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6331c5eca5559104ca20726db1500738, type: 2}
   - {fileID: 11400000, guid: c09c8f47a4396e641862c819f896b45b, type: 2}
   - {fileID: 11400000, guid: 9ee52901800de6b4282d9537af3b587b, type: 2}
-  radius: 4.5
+  radius: 5
 --- !u!1 &1634659752
 GameObject:
   m_ObjectHideFlags: 0
