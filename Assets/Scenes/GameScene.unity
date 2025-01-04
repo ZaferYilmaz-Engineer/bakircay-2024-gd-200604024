@@ -1596,7 +1596,7 @@ PrefabInstance:
     - target: {fileID: 6339928477966038758, guid: 84d1f1e60d94b4546af320d227bf7e7f,
         type: 3}
       propertyPath: m_Name
-      value: ScoreUI
+      value: GameplayUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
