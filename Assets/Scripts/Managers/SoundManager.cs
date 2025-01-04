@@ -8,12 +8,37 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private SoundReferencesSO soundReferencesSO;
 
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         PlayBackgroundMusic();
         
         PlacementArea.OnAnyObjectsPaired += PlacementArea_OnAnyObjectsPaired;
         LevelManager.OnAnyObjectSpawned += LevelManager_OnAnyObjectSpawned;
+        ObjectDragController.OnObjectPicked += ObjectDragController_OnObjectPicked;
+        ObjectDragController.OnObjectDropped += ObjectDragController_OnObjectDropped;
+    }
+
+    private void ObjectDragController_OnObjectDropped()
+    {
+        var audioClip = soundReferencesSO.objectSpawnSoundEffect;
+        var volume = 1f;
+        var pitch = 0.9f;
+        Play2DSound(audioClip, volume, pitch);
+    }
+
+    private void ObjectDragController_OnObjectPicked()
+    {
+        var audioClip = soundReferencesSO.objectSpawnSoundEffect;
+        var volume = 1f;
+        var pitch = 1.1f;
+        Play2DSound(audioClip, volume, pitch);
     }
 
     private void LevelManager_OnAnyObjectSpawned()
@@ -44,10 +69,13 @@ public class SoundManager : MonoBehaviour
         audioSource.Play();
     }
 
-    private void Play2DSound(AudioClip clip, float volume = 1f)
+    private void Play2DSound(AudioClip clip, float volume = 1f, float pitch = 1f)
     {
-        Vector3 position = Camera.main.transform.position;
-        AudioSource.PlayClipAtPoint(clip, position, volume);
+        // Vector3 position = Camera.main.transform.position;
+        // AudioSource.PlayClipAtPoint(clip, position, volume);
+
+        audioSource.pitch = pitch;
+        audioSource.PlayOneShot(clip, volume);
     }
     
     private void Play3DSound(AudioClip clip, Vector3 position, float volume = 1f)
@@ -59,5 +87,7 @@ public class SoundManager : MonoBehaviour
     {
         PlacementArea.OnAnyObjectsPaired -= PlacementArea_OnAnyObjectsPaired;
         LevelManager.OnAnyObjectSpawned -= LevelManager_OnAnyObjectSpawned;
+        ObjectDragController.OnObjectPicked -= ObjectDragController_OnObjectPicked;
+        ObjectDragController.OnObjectDropped -= ObjectDragController_OnObjectDropped;
     }
 }

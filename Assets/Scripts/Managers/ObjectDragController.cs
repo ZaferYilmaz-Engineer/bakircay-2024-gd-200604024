@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ObjectDragController : MonoBehaviour
 {
+    public static event Action OnObjectPicked;
+    public static event Action OnObjectDropped;
+    
     [SerializeField] private LayerMask draggableLayer;
     [SerializeField] private LayerMask groundLayer;
     
@@ -35,6 +38,7 @@ public class ObjectDragController : MonoBehaviour
 
         currentObject = draggableObject;
         currentObject.JumpToDragStartPosition();
+        OnObjectPicked?.Invoke();
     }
     
     private void OnTouchHold(TouchManager.TouchData touchData)
@@ -54,6 +58,7 @@ public class ObjectDragController : MonoBehaviour
     {
         currentObject?.Drop();
         currentObject = null;
+        OnObjectDropped?.Invoke();
     }
     
     private void OnDestroy()
