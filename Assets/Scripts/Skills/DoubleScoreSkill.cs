@@ -6,12 +6,12 @@ public class DoubleScoreSkill : BaseSkill
 {
     protected override void HandleSkill()
     {
-        GameplayUI.Instance.isDoubleScoreActive = true;
+        GameplayUI.Instance.SetDoubleScoreState(true);
     }
 
     protected override void DeactivateSkill()
     {
         base.DeactivateSkill();
-        GameplayUI.Instance.isDoubleScoreActive = false;
+        GameplayUI.Instance.SetDoubleScoreState(false);
     }
 }

@@ -87,8 +87,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeaffc8d70df7d4f809232394b1ca57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDoubleScoreActive: 0
   panel: {fileID: 5573432186537734723}
   scoreText: {fileID: 5485119373654797749}
+  doubleScoreText: {fileID: 3339698194552141361}
   scoreContainer: {fileID: 8033511258872153776}
   resetButton: {fileID: 5458965371922925371}
 --- !u!1 &6608638723810513593
@@ -448,11 +450,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5891337109340450235, guid: 48c3dfdb785510c4f90695881d905bac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48c3dfdb785510c4f90695881d905bac, type: 3}
+--- !u!114 &3339698194552141361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6283318881639014387, guid: 48c3dfdb785510c4f90695881d905bac,
+    type: 3}
+  m_PrefabInstance: {fileID: 8748850217007327682}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5485119373654797749 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3852028938110665847, guid: 48c3dfdb785510c4f90695881d905bac,
