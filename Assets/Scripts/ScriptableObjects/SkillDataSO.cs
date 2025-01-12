@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/SkillDataSO", fileName = "Skill Data")]
 public class SkillDataSO : ScriptableObject
 {
-    public int cooldown;
-    public int duration;
+    public float cooldown;
+    public float duration;
 }
