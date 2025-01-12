@@ -11,7 +11,7 @@ public class GameplayUI : MonoBehaviour
 {
     public static GameplayUI Instance { get; private set; }
 
-    public bool isDoubleScoreActive;
+    [HideInInspector] public bool isDoubleScoreActive;
     
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI scoreText;

@@ -53,6 +53,11 @@ public class SameObjectsSkill : BaseSkill
     protected override void DeactivateSkill()
     {
         base.DeactivateSkill();
+
+        if (LevelManager.Instance.isObjectsSpawning)
+        {
+            return;
+        }
         
         StartCoroutine(HandleSkill());
         IEnumerator HandleSkill()

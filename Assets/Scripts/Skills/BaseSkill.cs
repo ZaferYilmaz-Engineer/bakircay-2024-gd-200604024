@@ -6,13 +6,14 @@ using UnityEngine;
 public abstract class BaseSkill : MonoBehaviour
 {
     public static event Action<float> OnAnySkillActivated;
+    public static event Action<SkillDataSO> OnAnySkillInCooldown;
     
-    [SerializeField] private SkillDataSO skillDataSO;
+    public SkillDataSO skillDataSO;
 
     private bool isSkillActive;
     private bool isSkillOnCooldown;
 
-    public void ActivateSkill()
+    public void TryActivateSkill()
     {
         if (isSkillActive || isSkillOnCooldown)
         {
@@ -37,6 +38,7 @@ public abstract class BaseSkill : MonoBehaviour
     private IEnumerator HandleCooldown()
     {
         isSkillOnCooldown = true;
+        OnAnySkillInCooldown?.Invoke(skillDataSO);
         yield return new WaitForSeconds(skillDataSO.cooldown);
         isSkillOnCooldown = false;
     }

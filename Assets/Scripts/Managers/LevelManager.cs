@@ -9,7 +9,9 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
     public static Action OnAnyObjectSpawned;
 
-    /*[HideInInspector]*/ public List<DraggableObject> activeDraggableObjectList = new();
+    public bool isObjectsSpawning;
+
+    [HideInInspector] public List<DraggableObject> activeDraggableObjectList = new();
     
     [SerializeField] private DraggableObjectSO[] draggableObjectArray;
     [SerializeField] [Range(0, 10f)] private float radius;
@@ -68,6 +70,7 @@ public class LevelManager : MonoBehaviour
 
     private void SpawnObjects()
     {
+        isObjectsSpawning = true;
         totalObjectCount = INITIAL_OBJECT_COUNT + 4 * (CurrentLevel - 1);
         StartCoroutine(SpawnObjectCoroutine(totalObjectCount));
     }
@@ -88,7 +91,8 @@ public class LevelManager : MonoBehaviour
             }
             
         }
-        
+
+        isObjectsSpawning = false;
         TouchManager.Instance.isTouchEnabled = true;
     }
 

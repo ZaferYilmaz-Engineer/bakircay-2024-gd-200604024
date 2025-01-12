@@ -7,31 +7,21 @@ using UnityEngine.UI;
 
 public class SkillUI : MonoBehaviour
 {
-    [SerializeField] private Button firstSkillButton;
-    [SerializeField] private Button secondSkillButton;
+    [SerializeField] private SkillButtonUI firstSkillButton;
+    [SerializeField] private SkillButtonUI secondSkillButton;
     [SerializeField] private Image skillDurationImage;
     [SerializeField] private GameObject skillDurationObject;
 
     private void Start()
     {
-        firstSkillButton.onClick.AddListener(() =>
-        {
-            SkillManager.Instance.TryActiveSkill(0);
-        });
-        
-        secondSkillButton.onClick.AddListener(() =>
-        {
-            SkillManager.Instance.TryActiveSkill(1);
-        });
-        
         BaseSkill.OnAnySkillActivated += OnAnySkillActivated;
         skillDurationObject.SetActive(false);
     }
 
     private void OnAnySkillActivated(float duration)
     {
-        firstSkillButton.interactable = false;
-        secondSkillButton.interactable = false;
+        firstSkillButton.SetInteractable(false);
+        secondSkillButton.SetInteractable(false);
         
         skillDurationObject.SetActive(true);
         skillDurationImage.fillAmount = 1f;
@@ -39,8 +29,8 @@ public class SkillUI : MonoBehaviour
         {
             skillDurationObject.SetActive(false);
             
-            firstSkillButton.interactable = true;
-            secondSkillButton.interactable = true;
+            firstSkillButton.SetInteractable(true);
+            secondSkillButton.SetInteractable(true);
         };
     }
 

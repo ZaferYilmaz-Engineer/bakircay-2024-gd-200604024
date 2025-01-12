@@ -20,19 +20,19 @@ public class SkillManager : MonoBehaviour
         Instance = this;
     }
 
-    public void TryActiveSkill(int index)
+    public void TryActiveSkill(SkillDataSO skillDataSO)
     {
         if (!TouchManager.Instance.isTouchEnabled)
         {
             return;
         }
-        
-        if (index >= skillArray.Length || index < 0)
+
+        foreach (var skill in skillArray)
         {
-            Debug.LogError("Skill index was out of bounds of skill array");
-            return;
+            if (skill.skillDataSO != skillDataSO) continue;
+            
+            skill.TryActivateSkill();
+            break;
         }
-        
-        skillArray[index].ActivateSkill();
     }
 }
