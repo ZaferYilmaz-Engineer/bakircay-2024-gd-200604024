@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class DraggableObject : MonoBehaviour
 {
+    public static event Action<DraggableObject> OnBeingDestroyed;
+    
     public DraggableObjectSO DraggableObjectSO => draggableObjectSO;
     public bool isBeingDragged;
+    public DraggableObjectSO originalDraggableObjectSO;
 
     [SerializeField] private DraggableObjectSO draggableObjectSO;
     
@@ -75,6 +78,7 @@ public class DraggableObject : MonoBehaviour
 
     public void DestroySelf()
     {
+        OnBeingDestroyed?.Invoke(this);
         Destroy(gameObject);
     }
 }

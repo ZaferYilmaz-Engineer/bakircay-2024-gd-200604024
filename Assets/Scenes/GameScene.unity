@@ -483,6 +483,64 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &412548497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412548499}
+  - component: {fileID: 412548498}
+  m_Layer: 0
+  m_Name: SameObjectSkill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &412548498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412548497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5740aa3125825842bd4534a3acebf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDataSO: {fileID: 11400000, guid: b9982e08b82550d4ca40191302b16626, type: 2}
+  draggableObjectSOArray:
+  - {fileID: 11400000, guid: 192b9d55f2684384bb74ec576f31b417, type: 2}
+  - {fileID: 11400000, guid: 06bb71718d0f99d44aafc08d0d1bd4ce, type: 2}
+  - {fileID: 11400000, guid: 7adc5522696542349b3e3e9da0c412b7, type: 2}
+  - {fileID: 11400000, guid: 66a6aa17a3feb8246a73b05fe8aa088f, type: 2}
+  - {fileID: 11400000, guid: 2c68f6fae41b5b6459622826a2592cc8, type: 2}
+  - {fileID: 11400000, guid: d55081f8e4f52ea4ca85be469b7e9701, type: 2}
+  - {fileID: 11400000, guid: 0faa58c9b9258e8448e94d193e68bdcf, type: 2}
+  - {fileID: 11400000, guid: 362d32c9d847bb94eafddee926de8c91, type: 2}
+  - {fileID: 11400000, guid: 49a82f9a70bd2f4438f84f6dae8d66e5, type: 2}
+  - {fileID: 11400000, guid: 6331c5eca5559104ca20726db1500738, type: 2}
+  - {fileID: 11400000, guid: c09c8f47a4396e641862c819f896b45b, type: 2}
+  - {fileID: 11400000, guid: 9ee52901800de6b4282d9537af3b587b, type: 2}
+--- !u!4 &412548499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412548497}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1463424911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526994206
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +878,53 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2221980262426975423}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1463424910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1463424911}
+  - component: {fileID: 1463424912}
+  m_Layer: 0
+  m_Name: SkillManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1463424911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463424910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 412548499}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1463424912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463424910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ee61690fcc40c4a819135943b32dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillArray:
+  - {fileID: 412548498}
 --- !u!1 &1488793982
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d790d2296310547b5702488bc750fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeDraggableObjectList: []
   draggableObjectArray:
   - {fileID: 11400000, guid: 192b9d55f2684384bb74ec576f31b417, type: 2}
   - {fileID: 11400000, guid: 06bb71718d0f99d44aafc08d0d1bd4ce, type: 2}
@@ -1820,6 +1926,7 @@ SceneRoots:
   - {fileID: 1171187185}
   - {fileID: 1488793983}
   - {fileID: 1735920002}
+  - {fileID: 1463424911}
   - {fileID: 2109572466}
   - {fileID: 526994210}
   - {fileID: 1767062057}

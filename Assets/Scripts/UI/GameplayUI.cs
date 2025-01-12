@@ -24,6 +24,13 @@ public class GameplayUI : MonoBehaviour
     {
         resetButton.onClick.AddListener(OnResetButtonClicked);
     }
+    
+    private void Start()
+    {
+        panel.SetActive(true);
+        scoreText.text = Score.ToString();
+        PlacementArea.OnAnyObjectsPaired += PlacementArea_OnAnyObjectsPaired;
+    }
 
     private void OnResetButtonClicked()
     {
@@ -31,11 +38,6 @@ public class GameplayUI : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void Start()
-    {
-        scoreText.text = Score.ToString();
-        PlacementArea.OnAnyObjectsPaired += PlacementArea_OnAnyObjectsPaired;
-    }
     
     private void PlacementArea_OnAnyObjectsPaired(bool isSuccessful)
     {
