@@ -10,15 +10,17 @@ public abstract class BaseSkill : MonoBehaviour
     [SerializeField] private SkillDataSO skillDataSO;
 
     private bool isSkillActive;
+    private bool isSkillOnCooldown;
 
     public void ActivateSkill()
     {
-        if (isSkillActive)
+        if (isSkillActive || isSkillOnCooldown)
         {
             return;
         }
         
         HandleSkill();
+        
         OnAnySkillActivated?.Invoke(skillDataSO.duration);
         Invoke(nameof(DeactivateSkill), skillDataSO.duration);
         isSkillActive = true;
@@ -29,5 +31,13 @@ public abstract class BaseSkill : MonoBehaviour
     protected virtual void DeactivateSkill()
     {
         isSkillActive = false;
+        StartCoroutine(HandleCooldown());
+    }
+
+    private IEnumerator HandleCooldown()
+    {
+        isSkillOnCooldown = true;
+        yield return new WaitForSeconds(skillDataSO.cooldown);
+        isSkillOnCooldown = false;
     }
 }

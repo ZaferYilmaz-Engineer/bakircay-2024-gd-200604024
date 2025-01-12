@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 public class GameplayUI : MonoBehaviour
 {
+    public static GameplayUI Instance { get; private set; }
+
+    public bool isDoubleScoreActive;
+    
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Transform scoreContainer;
@@ -22,6 +26,14 @@ public class GameplayUI : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance)
+        {
+            Destroy(this);
+            return;
+        }
+        
+        Instance = this;
+        
         resetButton.onClick.AddListener(OnResetButtonClicked);
     }
     
@@ -45,8 +57,10 @@ public class GameplayUI : MonoBehaviour
         {
             return;
         }
+
+        var addedScore = isDoubleScoreActive ? 2 : 1;
         
-        Score++;
+        Score += addedScore;
         scoreText.text = Score.ToString();
 
         scoreContainer.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5);

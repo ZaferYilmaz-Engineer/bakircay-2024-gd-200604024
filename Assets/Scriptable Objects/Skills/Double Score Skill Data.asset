@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80059dafc33ef3245a8c5c9d947430f4, type: 3}
-  m_Name: Same Objects Skill Data
+  m_Name: Double Score Skill Data
   m_EditorClassIdentifier: 
   cooldown: 5
-  duration: 10
+  duration: 12
