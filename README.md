@@ -33,13 +33,12 @@ Oyuna reset butonu eklenmiştir.
 
 Final için istenen tüm özellikler oyunda mevcuttur.
 
+# OYUN LİNKİ
+https://zaferyilmaz.itch.io/bakircay-oyun-programlama
+
 # OYUN VİDEOSU
 
-
-
 https://github.com/user-attachments/assets/ae567e7f-8130-47a9-8504-cff1cc0923a8
-
-
 
 # OYUN FOTOĞRAFLARI
 
@@ -48,6 +47,4 @@ https://github.com/user-attachments/assets/ae567e7f-8130-47a9-8504-cff1cc0923a8
 
 ![oyunekrani_2](https://github.com/user-attachments/assets/5e582305-6626-4ac7-909c-e39e6d7f39a0)
 
-![oyunekrani_3](https://github.com/user-attachments/assets/5f2ce7a9-f14a-4ea5-9af0-4457b2d4d265)
-
- 
+![oyunekrani_3](https://github.com/user-attachments/assets/5f2ce7a9-f14a-4ea5-9af0-4457b2d4d265) 
